@@ -8,7 +8,7 @@
  * http://www.opensource.org/licenses/mit-license.php
  *
  * Launch  : February 2009
- * Version : 1.0.0-rc3
+ * Version : 1.0.0-rc3-genius-modifications
  * Released: Tuesday 12th May, 2009 - 00:00
  * Debug: jquery.qtip.debug.js
  */
