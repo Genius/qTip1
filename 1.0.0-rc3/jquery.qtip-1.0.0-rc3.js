@@ -1877,41 +1877,6 @@
          }
       };
 
-      // Adjust positions of the tooltips on window resize or scroll if enabled
-      var adjustTimer;
-      $(window).bind('resize scroll', function(event)
-      {
-         clearTimeout(adjustTimer);
-         adjustTimer = setTimeout(function()
-         {
-            // Readjust cached screen values
-            if(event.type === 'scroll')
-               $.fn.qtip.cache.screen.scroll = { left: $(window).scrollLeft(), top: $(window).scrollTop() };
-            else
-            {
-               $.fn.qtip.cache.screen.width = $(window).width();
-               $.fn.qtip.cache.screen.height = $(window).height();
-            };
-
-            for(i = 0; i < $.fn.qtip.interfaces.length; i++)
-            {
-               // Access current elements API
-               var api = $.fn.qtip.interfaces[i];
-
-               // Update position if resize or scroll adjustments are enabled
-               if(api.status.rendered === true
-               && (api.options.position.type !== 'static'
-               || api.options.position.adjust.scroll && event.type === 'scroll'
-               || api.options.position.adjust.resize && event.type === 'resize'))
-               {
-                  // Queue the animation so positions are updated correctly
-                  api.updatePosition(event, true);
-               }
-            };
-         }
-         , 100);
-      })
-
       // Hide unfocus toolipts on document mousedown
       $(document).bind('mousedown.qtip', function(event)
       {
